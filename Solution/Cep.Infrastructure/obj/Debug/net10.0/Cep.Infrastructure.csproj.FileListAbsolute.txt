@@ -13,3 +13,4 @@
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/refint/Cep.Infrastructure.dll
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.pdb
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/ref/Cep.Infrastructure.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.sourcelink.json

@@ -9,3 +9,4 @@
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/refint/Cep.Domain.dll
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.pdb
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/ref/Cep.Domain.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.sourcelink.json

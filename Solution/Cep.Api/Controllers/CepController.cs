@@ -17,6 +17,12 @@ namespace Cep.Api.Controllers
         {
             _cepRepository = cepRepository;
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllCeps()
+        {
+            var ceps = await _cepRepository.GetAllCep();
+            return Ok(ceps);
+        }
 
         [HttpGet("{cep}")]
         public async Task<IActionResult> GetCep(string cep)

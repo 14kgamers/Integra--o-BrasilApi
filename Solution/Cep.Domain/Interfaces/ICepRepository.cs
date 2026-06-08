@@ -8,6 +8,7 @@ namespace Cep.Domain.Interfaces
 {
     public interface ICepRepository
     {
+        Task<List<CepEntity>> GetAllCep();
         Task<CepEntity> GetCepAsync(string cep);
         
     }

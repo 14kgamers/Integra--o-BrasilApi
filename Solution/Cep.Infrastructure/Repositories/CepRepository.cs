@@ -2,7 +2,7 @@ using Cep.Domain.Entities;
 using Cep.Domain.Interfaces;
 using Cep.Infrastructure.Data;
 using Cep.Infrastructure.Services;
-
+using Microsoft.EntityFrameworkCore;
 namespace Cep.Infrastructure.Repositories
 {
     public class CepRepository : ICepRepository
@@ -16,6 +16,10 @@ namespace Cep.Infrastructure.Repositories
         {
             _context = context;
             _cepService = cepService;
+        }
+        public async Task<List<CepEntity>> GetAllCep()
+        {
+            return await _context.CepEntities.ToListAsync();
         }
 
         public async Task<CepEntity?> GetCepAsync(string cep)

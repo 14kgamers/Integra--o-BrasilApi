@@ -41,3 +41,4 @@
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Api/obj/Debug/net10.0/Cep.Api.pdb
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Api/obj/Debug/net10.0/Cep.Api.genruntimeconfig.cache
 /var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Api/obj/Debug/net10.0/ref/Cep.Api.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Api/obj/Debug/net10.0/Cep.Api.sourcelink.json
