@@ -1,0 +1,15 @@
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/bin/Debug/net10.0/Cep.Infrastructure.deps.json
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/bin/Debug/net10.0/Cep.Infrastructure.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/bin/Debug/net10.0/Cep.Infrastructure.pdb
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/bin/Debug/net10.0/Cep.Domain.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/bin/Debug/net10.0/Cep.Domain.pdb
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.csproj.AssemblyReference.cache
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.AssemblyInfoInputs.cache
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.AssemblyInfo.cs
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.csproj.CoreCompileInputs.cache
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infr.38F1DB5B.Up2Date
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/refint/Cep.Infrastructure.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/Cep.Infrastructure.pdb
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Infrastructure/obj/Debug/net10.0/ref/Cep.Infrastructure.dll

@@ -1,0 +1,11 @@
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/bin/Debug/net10.0/Cep.Domain.deps.json
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/bin/Debug/net10.0/Cep.Domain.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/bin/Debug/net10.0/Cep.Domain.pdb
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.AssemblyInfoInputs.cache
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.AssemblyInfo.cs
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.csproj.CoreCompileInputs.cache
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/refint/Cep.Domain.dll
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/Cep.Domain.pdb
+/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Domain/obj/Debug/net10.0/ref/Cep.Domain.dll

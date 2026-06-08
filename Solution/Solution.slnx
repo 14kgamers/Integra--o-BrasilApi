@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Cep.Api/Cep.Api.csproj" />
+  <Project Path="Cep.Domain/Cep.Domain.csproj" />
+  <Project Path="Cep.Infrastructure/Cep.Infrastructure.csproj" />
+</Solution>

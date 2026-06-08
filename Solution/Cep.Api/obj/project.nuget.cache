@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "NHRQcK42Agg=",
+  "success": true,
+  "projectFilePath": "/var/home/vitor/projects/Back-End/Integração-BrasilApi/Solution/Cep.Api/Cep.Api.csproj",
+  "expectedPackageFiles": [
+    "/var/home/vitor/.nuget/packages/microsoft.aspnetcore.openapi/10.0.8/microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/microsoft.entityframeworkcore/10.0.8/microsoft.entityframeworkcore.10.0.8.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.8/microsoft.entityframeworkcore.abstractions.10.0.8.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.8/microsoft.entityframeworkcore.analyzers.10.0.8.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/microsoft.entityframeworkcore.inmemory/10.0.8/microsoft.entityframeworkcore.inmemory.10.0.8.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/microsoft.openapi/2.7.5/microsoft.openapi.2.7.5.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/swashbuckle.aspnetcore.swagger/10.2.1/swashbuckle.aspnetcore.swagger.10.2.1.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.2.1/swashbuckle.aspnetcore.swaggergen.10.2.1.nupkg.sha512",
+    "/var/home/vitor/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.2.1/swashbuckle.aspnetcore.swaggerui.10.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}

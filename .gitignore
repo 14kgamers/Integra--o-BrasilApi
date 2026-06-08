@@ -1,0 +1,23 @@
+# This is a comment - Git ignores lines starting with '#'
+
+# Ignore a specific file by name
+secret_token.txt
+
+# Ignore all files ending with a specific extension
+*.log
+*.tmp
+
+# Ignore an entire folder and all its contents
+node_modules/
+build/
+dist/
+
+# Ignore files inside a subfolder but not the folder itself
+config/local_settings.json
+
+# Exception: Ignore all .log files, BUT track this specific one
+!important_system.log
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
