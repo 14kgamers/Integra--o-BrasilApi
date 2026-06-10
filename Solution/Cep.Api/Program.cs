@@ -11,14 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AdbContext>(options =>
+builder.Services.AddDbContext<AdbContext, MoedaDbContext>(options =>
 {
     options.UseInMemoryDatabase("CepDb");
 });
 
 builder.Services.AddHttpClient<CepService>();
+builder.Services.AddHttpClient<MoedaService>();
 
 builder.Services.AddScoped<ICepRepository, CepRepository>();
+builder.Services.AddScoped<IMoedaRepository, MoedaRepository>();
 
 var app = builder.Build();
 

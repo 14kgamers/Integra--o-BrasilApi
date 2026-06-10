@@ -19,5 +19,6 @@ namespace Cep.Infrastructure.Data
 
             base.OnModelCreating(modelBuilder);
         }
+        
     }
 }
