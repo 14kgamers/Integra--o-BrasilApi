@@ -11,16 +11,26 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AdbContext, MoedaDbContext>(options =>
+builder.Services.AddDbContext<AdbContext>(options =>
 {
     options.UseInMemoryDatabase("CepDb");
+});
+builder.Services.AddDbContext<MoedaDbContext>(options =>
+{
+    options.UseInMemoryDatabase("MoedaDb");
+});
+builder.Services.AddDbContext<DialingDbContext>(options =>
+{
+    options.UseInMemoryDatabase("DialingDb");
 });
 
 builder.Services.AddHttpClient<CepService>();
 builder.Services.AddHttpClient<MoedaService>();
+builder.Services.AddHttpClient<DialingService>();
 
 builder.Services.AddScoped<ICepRepository, CepRepository>();
 builder.Services.AddScoped<IMoedaRepository, MoedaRepository>();
+builder.Services.AddScoped<IDialingRepository, DialingRepository>();
 
 var app = builder.Build();
 

@@ -20,15 +20,11 @@ namespace Cep.Infrastructure.Repositories
             _moedaService = moedaService;
         }
 
-        public Task<List<MoedaEntity>> GetAllMoeda()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<MoedaEntity>> GetAllMoedas()
+        public async Task<List<MoedaEntity>> GetAllMoeda()
         {
             return await _context.MoedaEntities.ToListAsync();
         }
+
 
         public async Task<MoedaEntity?> GetMoedaAsync(string simbolo)
         {

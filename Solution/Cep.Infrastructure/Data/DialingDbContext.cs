@@ -7,19 +7,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cep.Infrastructure.Data
 {
-    public class MoedaDbContext : DbContext
+    public class DialingDbContext : DbContext
     {
-        public MoedaDbContext(DbContextOptions<MoedaDbContext> options)
+       public DialingDbContext(DbContextOptions<DialingDbContext> options)
             : base(options)
         {
         }
 
-         public DbSet<MoedaEntity> MoedaEntities { get; set; }
+         public DbSet<DialingEntity> DialingEntities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MoedaEntity>()
-                .HasKey(x => x.simbolo);
+            modelBuilder.Entity<DialingEntity>()
+                .HasKey(x => x.Ddd);
 
             base.OnModelCreating(modelBuilder);
         }
