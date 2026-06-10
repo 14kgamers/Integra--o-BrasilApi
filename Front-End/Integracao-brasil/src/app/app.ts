@@ -2,11 +2,13 @@ import { Component, signal } from '@angular/core';
 import { CepService } from './core/services/cep.service';
 import { Cep } from './shared/models/cep.model';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
