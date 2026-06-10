@@ -15,10 +15,12 @@ import { CommonModule } from '@angular/common';
 export class App {
 
   ceps = signal<Cep[]>([]);
+  loading = signal(false)
 
   constructor(private cepService: CepService) {}
 
   buscar(cep?: string) {
+    this.loading.set(true);
 
     const request: Observable<Cep | Cep[]> = cep
       ? this.cepService.buscarCep(cep)
@@ -27,11 +29,12 @@ export class App {
     request.subscribe({
       next: (data) => {
         this.ceps.set(cep ? [data as Cep] : data as Cep[]);
-        console.log(data)
+        this.loading.set(false); // termina loading
       },
       error: (err: any) => {
         console.error('Erro ao buscar CEP(s):', err);
         this.ceps.set([]);
+        this.loading.set(false)
       }
     });
   }
