@@ -7,7 +7,7 @@ import { Cep } from '../../shared/models/cep.model';
 })
 export class CepService {
 
-  private readonly api = 'http://localhost:5049/api/cep';
+  private readonly api = 'http://localhost:5197/api/cep';
 
   constructor(private http: HttpClient) {}
 

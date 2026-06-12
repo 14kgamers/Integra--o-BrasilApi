@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import Keycloak  from 'keycloak-js';
+import { Component, inject, signal } from '@angular/core';
 import { CepService } from './core/services/cep.service';
 import { Cep } from './shared/models/cep.model';
 import { Observable } from 'rxjs';
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
 
+  keycloak = inject(Keycloak);
   ceps = signal<Cep[]>([]);
   loading = signal(false)
 
@@ -37,5 +39,11 @@ export class App {
         this.loading.set(false)
       }
     });
+
+
+  }
+
+  public logout() {
+    this.keycloak.logout();
   }
 }

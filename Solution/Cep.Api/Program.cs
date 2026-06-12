@@ -10,25 +10,29 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngular",
-        policy =>
-        {
-            policy
-                .WithOrigins("http://localhost:4200")
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
+    options.AddPolicy("Angular", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
+
 builder.Services.AddDbContext<AdbContext>(options =>
 {
     options.UseInMemoryDatabase("CepDb");
 });
+
 builder.Services.AddDbContext<MoedaDbContext>(options =>
 {
     options.UseInMemoryDatabase("MoedaDb");
 });
+
 builder.Services.AddDbContext<DialingDbContext>(options =>
 {
     options.UseInMemoryDatabase("DialingDb");
@@ -43,7 +47,6 @@ builder.Services.AddScoped<IMoedaRepository, MoedaRepository>();
 builder.Services.AddScoped<IDialingRepository, DialingRepository>();
 
 var app = builder.Build();
-app.UseCors("AllowAngular");
 
 if (app.Environment.IsDevelopment())
 {
@@ -51,7 +54,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("Angular");
+
 app.UseHttpsRedirection();
+
+app.UseAuthorization();
 
 app.MapControllers();
 

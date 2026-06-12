@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cep.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cep.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+
+    
     public class CepController : ControllerBase
     {
         private readonly ICepRepository _cepRepository;

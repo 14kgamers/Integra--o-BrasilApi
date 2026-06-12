@@ -1,12 +1,33 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig } from '@angular/core';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import {
+  provideKeycloak,
+  withAutoRefreshToken
+} from 'keycloak-angular';
 
-import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([authInterceptor])
+    ),
+
+    provideKeycloak({
+      config: {
+        url: 'https://auth.headsoft.com.br',
+        realm: 'headsoft',
+        clientId: 'headsoft-web'
+      },
+
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false,
+        redirectUri:
+        'http://localhost:5197/api/logged-user/redirect'
+      },
+
+
+    })
   ]
 };
