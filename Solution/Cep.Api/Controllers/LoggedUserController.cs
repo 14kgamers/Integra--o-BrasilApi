@@ -39,7 +39,7 @@ public IActionResult RedirectFromKeycloak(
     string session_state
 )
 {
-    Console.WriteLine($"CODE: {code}");
+    
 
     var returnUri =
         Request.Cookies["return_uri"]
