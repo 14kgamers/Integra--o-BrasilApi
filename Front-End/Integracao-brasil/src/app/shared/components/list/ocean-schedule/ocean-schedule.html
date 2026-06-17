@@ -15,63 +15,130 @@
 
     </div>
 
-    <!-- FILTROS -->
-    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-8">
 
-      <h2 class="text-lg font-semibold text-blue-400 mb-4">
-        Pesquisa
-      </h2>
+   <!-- FILTROS -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-8">
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <h2 class="text-lg font-semibold text-blue-400 mb-4">
+    Pesquisa
+  </h2>
 
-        <input
-          #originInput
-          type="text"
-          placeholder="Origem (BRPNG)"
-          class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
-        />
+  <!-- PRIMEIRA LINHA -->
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
 
-        <input
-          #destinationInput
-          type="text"
-          placeholder="Destino (CNSHA)"
-          class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
-        />
+    <!-- ORIGEM -->
+    <input
+      #originInput
+      type="text"
+      placeholder="Origem (BRPNG)"
+      class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+    />
 
-        <input
-          #carrierInput
-          type="text"
-          placeholder="Carrier (MAEU)"
-          class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
-        />
+    <!-- DESTINO -->
+    <input
+      #destinationInput
+      type="text"
+      placeholder="Destino (CNSHA)"
+      class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+    />
 
-      </div>
+    <!-- CARRIER -->
+    <input
+      #carrierInput
+      type="text"
+      placeholder="Carrier (MAEU)"
+      class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+    />
 
-      <button
-        type="button"
-        (click)="buscarSchedules(
-          originInput.value,
-          destinationInput.value,
-          carrierInput.value
-        )"
-        [disabled]="loading()"
-        class="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:cursor-not-allowed rounded-lg font-medium transition flex items-center gap-2"
-      >
+    <!-- WEEKS OUT -->
+   <select #weeksInput
+  class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200">
+  <option value="">Weeks Out</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
 
-        @if (loading()) {
-          <div
-            class="animate-spin h-4 w-4 rounded-full border-2 border-white border-t-transparent">
-          </div>
-        }
+<select #dateTypeInput
+  class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200">
+  <option value="">Date Type</option>
+  <option value="direct">Direct</option>
+  <option value="transshipment">Transshipment</option>
+</select>
 
-        <span>
-          {{ loading() ? 'Buscando...' : 'Buscar' }}
-        </span>
+  </div>
 
-      </button>
+  <!-- CHECKBOXES -->
+  <div class="flex flex-wrap gap-6 mt-6">
 
-    </div>
+    <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
 
+      <input
+        #directOnlyInput
+        type="checkbox"
+        class="w-4 h-4 accent-blue-500"
+      />
+
+      Direct Only
+
+    </label>
+
+    <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+
+      <input
+        #nearbyOriginInput
+        type="checkbox"
+        class="w-4 h-4 accent-blue-500"
+      />
+
+      Nearby Origin Ports
+
+    </label>
+
+    <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+
+      <input
+        #nearbyDestinationInput
+        type="checkbox"
+        class="w-4 h-4 accent-blue-500"
+      />
+
+      Nearby Destination Ports
+
+    </label>
+
+  </div>
+
+  <!-- BOTÃO -->
+  <button
+    (click)="buscarSchedules(
+      originInput.value,
+      destinationInput.value,
+      carrierInput.value,
+      weeksInput.value,
+      dateTypeInput.value,
+      directOnlyInput.checked,
+      nearbyOriginInput.checked,
+      nearbyDestinationInput.checked
+    )"
+    [disabled]="loading()"
+    class="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:cursor-not-allowed rounded-lg font-medium transition flex items-center gap-2"
+  >
+
+    <div
+      *ngIf="loading()"
+      class="animate-spin h-4 w-4 rounded-full border-2 border-white border-t-transparent"
+    ></div>
+
+    <span>
+      {{ loading() ? 'Buscando...' : 'Buscar Schedules' }}
+    </span>
+
+  </button>
+
+</div>
     <!-- RESULTADOS -->
     <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
 

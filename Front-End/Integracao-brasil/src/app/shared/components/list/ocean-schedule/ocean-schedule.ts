@@ -21,11 +21,18 @@ export class OceanScheduleComponent {
   buscarSchedules(
   origin?: string,
   destination?: string,
-  carrier?: string
+  carrier?: string,
+  weeksOut?: string,
+  dateType?: string,
+  directOnly?: boolean,
+  nearbyOrigin?: boolean,
+  nearbyDestination?: boolean
 ) {
+
   this.loading.set(true);
 
   this.scheduleService.list().subscribe({
+
     next: response => {
 
       this.schedules = response.data.items.filter(schedule => {
@@ -33,26 +40,67 @@ export class OceanScheduleComponent {
         const origemOk =
           !origin ||
           schedule.originUnloc
-            .toLowerCase()
+            ?.toLowerCase()
             .includes(origin.toLowerCase());
 
         const destinoOk =
           !destination ||
           schedule.destinationUnloc
-            .toLowerCase()
+            ?.toLowerCase()
             .includes(destination.toLowerCase());
 
         const carrierOk =
           !carrier ||
           schedule.scac
-            .toLowerCase()
+            ?.toLowerCase()
             .includes(carrier.toLowerCase());
 
-        return origemOk && destinoOk && carrierOk;
+        const weeksOk =
+          !weeksOut ||
+          schedule.totalDuration <= Number(weeksOut) * 7;
+
+        const dateTypeOk =
+          !dateType ||
+          schedule.scheduleType
+            ?.toLowerCase()
+            .includes(dateType.toLowerCase());
+
+        const directOnlyOk =
+          !directOnly ||
+          schedule.scheduleType?.toLowerCase() === 'direct';
+
+        const nearbyOriginOk =
+          !nearbyOrigin ||
+          schedule.originUnloc !== null;
+
+        const nearbyDestinationOk =
+          !nearbyDestination ||
+          schedule.destinationUnloc !== null;
+
+        return (
+          origemOk &&
+          destinoOk &&
+          carrierOk &&
+          weeksOk &&
+          dateTypeOk &&
+          directOnlyOk &&
+          nearbyOriginOk &&
+          nearbyDestinationOk
+        );
+
       });
+
+      this.loading.set(false);
+
+    },
+
+    error: err => {
+      console.log(err);
       this.loading.set(false);
     }
+
   });
+
 }
   testeSchedule() {
 
