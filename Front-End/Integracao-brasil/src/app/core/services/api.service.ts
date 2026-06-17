@@ -1,6 +1,8 @@
 import { inject, Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { ApiListResult } from "../../shared/Interfaces/api-result.interface";
+import { Observable } from "rxjs";
+import { HttpMethod } from "keycloak-angular";
 
 
 @Injectable({
@@ -19,9 +21,24 @@ export class ApiService {
     this._workspace = workspace;
   }
 
-  public getParams(params: object): HttpParams {
+  public getDefaultHeaders() {
+    return {
+      'workspace-identifier': this._workspace
+    }
+  }
+
+  public getParams(params: any): HttpParams {
 
     let httpParams = new HttpParams();
+
+    /* DEFAULT PARAMS */
+    // LIST CRITERIA
+    httpParams = httpParams.append('criteria', JSON.stringify({
+      pagination: {
+        index: params.criteria?.pagination?.index ?? 0,
+        size: params.criteria?.pagination?.size ?? 25
+      }
+    }));
 
     Object.entries(params).forEach(e => {
       httpParams = httpParams.append(e[0], JSON.stringify(e[1]))
@@ -30,23 +47,28 @@ export class ApiService {
     return httpParams;
   }
 
-  public search(filters: object){
-    return this._http.post(
-      `${this._api}/search`,
-      filters
+  public createRequest<TReturnType>(
+    method: HttpMethod,
+    config: {body?: object, params?: object, action?: string},
+    environment: 'Development' | 'Production' = 'Development')
+  : Observable<TReturnType> {
+    return this._http.request<TReturnType>(
+      method,
+      `${this._api}${config.action ? '/'+config.action : ''}?environment=${environment}`,
+      {
+        body: config.body,
+        params: this.getParams(config.params ?? {}),
+        headers: this.getDefaultHeaders()
+      }
     );
   }
 
-  public list<TItem>(params: object, environment: 'Development' | 'Production' = 'Development') {
-    return this._http.request<ApiListResult<TItem>>(
-      'GET',
-      `${this._api}?environment=${environment}`,
-      {
-        params: this.getParams(params),
-        headers: {
-          'workspace-identifier': this._workspace
-        }
-      }
-    );
+
+  public search(filters: object){
+    return this.createRequest("GET", {body: filters, action: 'search'});
+  }
+
+  public list<TItem>(params: object) {
+    return this.createRequest<ApiListResult<TItem>>("GET", {params: params});
   }
 }

@@ -1,1 +1,103 @@
-<p>cep works!</p>
+<main class="w-full h-screen bg-slate-950 flex items-center justify-center">
+
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full"></div>
+
+  <div class="w-full max-w-4xl px-8 relative z-10">
+
+    <h1 class="text-4xl font-semibold tracking-tight mb-2 text-slate-100 text-center">
+      Command Center
+    </h1>
+
+    <p class="text-slate-400 text-sm text-center mb-12">
+      Real-time orchestration and health monitoring for the Global API Infrastructure.
+    </p>
+
+    <!-- CARD DE PESQUISA -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-8 shadow-2xl">
+
+      <div class="flex items-center gap-2 mb-4 text-slate-300">
+        <span class="material-symbols-outlined text-blue-400">
+          terminal
+        </span>
+
+        <span class="text-sm font-medium tracking-wide">
+          CEP Command Input
+        </span>
+      </div>
+
+      <div class="relative flex items-center bg-slate-950 border border-slate-800 rounded-lg p-1.5">
+
+        <input
+          #cepInput
+          type="text"
+          placeholder="Enter CEP query or command..."
+          class="w-full bg-transparent text-slate-300 placeholder-slate-600 font-mono text-sm pl-3 pr-24 py-2.5 outline-none"
+        >
+
+        <kbd
+          class="cursor-pointer absolute right-3 bg-slate-800 border border-slate-700 text-[10px] text-slate-400 px-2 py-1 rounded font-mono"
+          (click)="buscar(cepInput.value)"
+        >
+          ENTER
+        </kbd>
+
+      </div>
+
+    </div>
+
+    <!-- RESULTADOS -->
+    <!-- RESULTADOS -->
+<div class="mt-6 space-y-2">
+
+  <div
+    *ngFor="let item of ceps()"
+    class="p-3 bg-slate-900 border border-slate-800 rounded-lg shadow"
+  >
+
+    <h3 class="text-blue-400 font-mono text-sm mb-2">
+      CEP: {{ item.cep }}
+    </h3>
+
+    <div class="space-y-1 text-sm">
+
+      <p class="text-slate-300">
+        <strong>Estado:</strong> {{ item.state }}
+      </p>
+
+      <p class="text-slate-300">
+        <strong>Cidade:</strong> {{ item.city }}
+      </p>
+
+      <p class="text-slate-300">
+        <strong>Bairro:</strong> {{ item.neighborhood }}
+      </p>
+
+      <p class="text-slate-300">
+        <strong>Rua:</strong> {{ item.street }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <!-- LOADING -->
+  <div
+    *ngIf="loading()"
+    class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+  >
+    <div class="bg-slate-900 p-6 rounded-xl border border-slate-700 text-center">
+
+      <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-400 mx-auto mb-4"></div>
+
+      <p class="text-slate-300 text-sm">
+        Buscando CEP...
+      </p>
+
+    </div>
+  </div>
+
+</main>

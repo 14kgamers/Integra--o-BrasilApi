@@ -61,18 +61,20 @@ body{
 
         <nav class="flex-1 p-3 space-y-1">
 
-            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-500/10 text-blue-400 font-semibold">
+            <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-500/10 text-blue-400 font-semibold">
                 <span class="material-symbols-outlined">
                     add_location
                 </span>
                 CEP API Controller
             </a>
 
-            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition">
-                <span class="material-symbols-outlined">
-                    account_balance
-                </span>
-                Schedule
+            <a
+              routerLink="/schedule"
+              class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition">
+              <span class="material-symbols-outlined">
+                account_balance
+              </span>
+              Schedule
             </a>
 
             <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition">
@@ -107,154 +109,9 @@ body{
     </aside>
 
     <!-- MAIN -->
-    <div class="flex-1 flex flex-col">
-
-        <!-- HEADER -->
-        <header class="h-16 bg-slate-900 border-b border-slate-800 px-8 flex items-center justify-between">
-
-            <h2 class="font-bold uppercase tracking-wide text-blue-400">
-                Infrastructure Control
-            </h2>
-
-            <div class="w-[500px]">
-
-                <input
-                    type="text"
-                    placeholder="Search resources..."
-                    class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 outline-none focus:border-blue-400">
-
-            </div>
-
-            <div class="flex items-center gap-5">
-
-                <span class="material-symbols-outlined cursor-pointer hover:text-blue-400">
-                    notifications
-                </span>
-
-                <span class="material-symbols-outlined cursor-pointer hover:text-blue-400">
-                    settings
-                </span>
-
-                <div class="w-10 h-10 rounded-full bg-blue-500"></div>
-
-            </div>
-
-        </header>
-
-        <!-- CONTENT -->
-        <main class="flex-1 overflow-auto relative tech-grid">
-
-            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full"></div>
-
-            <div class="p-10 relative z-10" style="display: flex;
-    justify-content: center">
-
-                <!-- CARD -->
-                <div class="p-12 relative z-10 max-w-5xl" >
-
-                    <h1 class="text-4xl font-semibold tracking-tight mb-2 text-slate-100">
-                        Command Center
-                    </h1>
-
-                    <p class="text-slate-400 text-sm max-w-2xl mb-12 leading-relaxed">
-                        Real-time orchestration and health monitoring for the Global API Infrastructure.
-                    </p>
-
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-8 max-w-3xl shadow-2xl backdrop-blur-md">
-
-                        <div class="flex items-center gap-2 mb-4 text-slate-300">
-                            <span class="material-symbols-outlined text-md text-blue-400">
-                                terminal
-                            </span>
-                            <span class="text-sm font-medium tracking-wide">
-                                CEP Command Input
-                            </span>
-                        </div>
-
-                        <!-- INPUT + BOTÃO (CORRIGIDO APENAS AQUI) -->
-                        <div class="relative flex items-center bg-slate-950/80 border border-slate-800 rounded-lg p-1.5">
-
-                            <input
-                                #cepInput
-                                type="text"
-                                placeholder="Enter CEP query or command..."
-                                class="w-full bg-transparent text-slate-300 placeholder-slate-600 font-mono text-sm pl-3 pr-24 py-2.5 outline-none"
-                            >
-
-
-                            <kbd
-                                class="cursor-pointer absolute right-3 bg-slate-800/80 border border-slate-700/60 text-[10px] text-slate-400 px-1.5 py-0.5 rounded font-mono shadow-sm"
-                                (click)="buscar(cepInput.value)"
-
-                                role="button"
-                                tabindex="0"
-                            >
-                                ENTER
-                            </kbd>
-
-                        </div>
-                          <div class="mt-6 space-y-3">
-
-<!-- LOADING OVERLAY -->
-<div
-  *ngIf="loading()"
-  class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
->
-  <div class="bg-slate-900 p-6 rounded-xl border border-slate-700 text-center">
-
-    <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-400 mx-auto mb-4"></div>
-
-    <p class="text-slate-300 text-sm">
-      Buscando CEP...
-    </p>
-
-  </div>
+<div class="flex-1 overflow-y-auto bg-slate-950">
+  <router-outlet></router-outlet>
 </div>
-
-
-  <div
-    *ngFor="let item of ceps()"
-    class="p-4 bg-slate-900 border border-slate-800 rounded-lg"
-  >
-    <a href="" class="font-mono text-blue-400">
-      CEP: {{ item.cep }}
-</a>
-
-    <p class="text-slate-300 text-sm">
-      {{ item.state }}
-    </p>
-
-    <p class="text-slate-400 text-sm">
-     Cidade: {{ item.city }}
-    </p>
-    <p class="text-slate-400 text-sm">
-      Bairro: {{ item.neighborhood }}
-    </p>
-    <p class="text-slate-400 text-sm">
-    Rua:  {{ item.street }}
-    </p>
-
-
-  </div>
-
-</div>
-
-
-                        <p class="text-[11px] text-slate-500 mt-4 font-normal tracking-wide">
-                            Execute real-time streaming queries against the global CEP clusters. Use
-                            <span class="text-blue-400 font-mono cursor-pointer hover:underline">--help</span> for syntax.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </main>
-
-    </div>
-
 </div>
 
 </body>

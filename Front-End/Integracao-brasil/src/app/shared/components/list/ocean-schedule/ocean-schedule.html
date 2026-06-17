@@ -1,1 +1,298 @@
-<p>ocean-schedule works!</p>
+<main class="w-full min-h-screen bg-slate-950 p-8">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- TÍTULO -->
+    <div class="mb-8">
+
+      <h1 class="text-4xl font-bold text-slate-100">
+        Ocean Schedule
+      </h1>
+
+      <p class="text-slate-400 mt-2">
+        Consulta de rotas marítimas e escalas.
+      </p>
+
+    </div>
+
+    <!-- FILTROS -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-8">
+
+      <h2 class="text-lg font-semibold text-blue-400 mb-4">
+        Pesquisa
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <input
+          #originInput
+          type="text"
+          placeholder="Origem (BRPNG)"
+          class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+        />
+
+        <input
+          #destinationInput
+          type="text"
+          placeholder="Destino (CNSHA)"
+          class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+        />
+
+        <input
+          #carrierInput
+          type="text"
+          placeholder="Carrier (MAEU)"
+          class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+        />
+
+      </div>
+
+      <button
+        type="button"
+        (click)="buscarSchedules(
+          originInput.value,
+          destinationInput.value,
+          carrierInput.value
+        )"
+        [disabled]="loading()"
+        class="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:cursor-not-allowed rounded-lg font-medium transition flex items-center gap-2"
+      >
+
+        @if (loading()) {
+          <div
+            class="animate-spin h-4 w-4 rounded-full border-2 border-white border-t-transparent">
+          </div>
+        }
+
+        <span>
+          {{ loading() ? 'Buscando...' : 'Buscar' }}
+        </span>
+
+      </button>
+
+    </div>
+
+    <!-- RESULTADOS -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+
+      <table class="w-full">
+
+        <thead class="bg-slate-950 border-b border-slate-800">
+
+          <tr class="text-left text-slate-400 text-sm">
+
+            <th class="p-4">Carrier</th>
+            <th class="p-4">Vessel</th>
+            <th class="p-4">Origem</th>
+            <th class="p-4">Destino</th>
+            <th class="p-4">Duração</th>
+            <th class="p-4">Tipo</th>
+            <th class="p-4">Ações</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for(schedule of schedules; track $index){
+
+          <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+
+            <td class="p-4">
+
+              <div class="font-semibold text-white">
+                {{ schedule.carrierName }}
+              </div>
+
+              <div class="text-xs text-slate-500">
+                {{ schedule.scac }}
+              </div>
+
+            </td>
+
+            <td class="p-4 text-slate-200">
+              {{ schedule.vesselName }}
+            </td>
+
+            <td class="p-4">
+
+              <div class="text-white">
+                {{ schedule.originCityName }}
+              </div>
+
+              <div class="text-xs text-slate-500">
+                {{ schedule.originCountry }}
+              </div>
+
+            </td>
+
+            <td class="p-4">
+
+              <div class="text-white">
+                {{ schedule.destinationCityName }}
+              </div>
+
+              <div class="text-xs text-slate-500">
+                {{ schedule.destinationCountry }}
+              </div>
+
+            </td>
+
+            <td class="p-4">
+
+              <span class="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full whitespace-nowrap">
+                {{ schedule.totalDuration }} dias
+              </span>
+
+            </td>
+
+            <td class="p-4">
+
+              <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">
+                {{ schedule.scheduleType }}
+              </span>
+
+            </td>
+
+            <td class="p-4">
+
+              <button
+                type="button"
+                (click)="schedule.expanded = !schedule.expanded"
+                class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-sm"
+              >
+                {{ schedule.expanded ? 'Ocultar' : 'Ver detalhes' }}
+              </button>
+
+            </td>
+
+          </tr>
+
+          @if(schedule.expanded){
+
+          <tr>
+
+            <td colspan="7" class="bg-slate-950 p-6">
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <div>
+
+                  <h3 class="text-blue-400 font-semibold mb-3">
+                    Informações da Viagem
+                  </h3>
+
+                  <p><strong>Serviço:</strong> {{ schedule.serviceName }}</p>
+                  <p><strong>Voyage:</strong> {{ schedule.voyageNumber }}</p>
+                  <p><strong>IMO:</strong> {{ schedule.imoNumber }}</p>
+
+                  <p><strong>Origin UNLOC:</strong> {{ schedule.originUnloc }}</p>
+                  <p><strong>Origin State:</strong> {{ schedule.originSubdivision }}</p>
+
+                  <p><strong>Destination UNLOC:</strong> {{ schedule.destinationUnloc }}</p>
+                  <p><strong>Destination State:</strong> {{ schedule.destinationSubdivision }}</p>
+
+                  <p>
+                    <strong>Saída:</strong>
+                    {{ schedule.originDepartureDate | date:'dd/MM/yyyy HH:mm' }}
+                  </p>
+
+                  <p>
+                    <strong>Chegada:</strong>
+                    {{ schedule.destinationArrivalDate | date:'dd/MM/yyyy HH:mm' }}
+                  </p>
+
+                </div>
+
+                <div>
+
+                  <h3 class="text-green-400 font-semibold mb-3">
+                    Cutoffs
+                  </h3>
+
+                  <p>
+                    <strong>Terminal:</strong>
+                    {{ schedule.terminalCutoff | date:'dd/MM/yyyy HH:mm' }}
+                  </p>
+
+                  <p>
+                    <strong>SI:</strong>
+                    {{ schedule.siCutoff | date:'dd/MM/yyyy HH:mm' }}
+                  </p>
+
+                  <p>
+                    <strong>VGM:</strong>
+                    {{ schedule.vgmCutoff | date:'dd/MM/yyyy HH:mm' }}
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div class="mt-6">
+
+                <h3 class="text-slate-300 font-semibold mb-4">
+                  Legs ({{ schedule.legs.length }})
+                </h3>
+
+                @for(leg of schedule.legs; track $index){
+
+                <div class="bg-slate-800 rounded-lg p-4 mb-3">
+
+                  <div class="flex justify-between mb-2">
+
+                    <span class="text-blue-400 font-semibold">
+                      Leg {{ leg.sequence }}
+                    </span>
+
+                    <span class="text-slate-400">
+                      {{ leg.transitDuration }} dias
+                    </span>
+
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+
+                    <div>
+                      <p><strong>Saída:</strong> {{ leg.departureCityName }}</p>
+                      <p>{{ leg.departureCountry }}</p>
+                      <p>{{ leg.departureDate | date:'dd/MM/yyyy HH:mm' }}</p>
+                    </div>
+
+                    <div>
+                      <p><strong>Chegada:</strong> {{ leg.arrivalCityName }}</p>
+                      <p>{{ leg.arrivalCountry }}</p>
+                      <p>{{ leg.arrivalDate | date:'dd/MM/yyyy HH:mm' }}</p>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-2 text-slate-300">
+                    {{ leg.transportName }}
+                    ({{ leg.conveyanceNumber }})
+                  </div>
+
+                </div>
+
+                }
+
+              </div>
+
+            </td>
+
+          </tr>
+
+          }
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</main>
