@@ -56,8 +56,22 @@ export class OceanScheduleComponent {
             .includes(carrier.toLowerCase());
 
         const weeksOk =
-          !weeksOut ||
-          schedule.totalDuration <= Number(weeksOut) * 7;
+        !weeksOut ||
+        (() => {
+
+          const departure = new Date(schedule.originDepartureDate);
+
+          const today = new Date();
+
+          const maxDate = new Date(today);
+
+          maxDate.setDate(
+            today.getDate() + (Number(weeksOut) * 7)
+          );
+
+          return departure <= maxDate;
+
+          })();
 
         const dateTypeOk =
           !dateType ||
