@@ -9,12 +9,16 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
+
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([authInterceptor])
     ),
+
 
     provideKeycloak({
       config: {
@@ -32,5 +36,6 @@ export const appConfig: ApplicationConfig = {
 
 
     })
+
   ]
 };

@@ -1,53 +1,68 @@
-import { Schedule } from './shared/models/schedule.model';
-import { scheduleService } from './core/services/schedule-list.service';
-import Keycloak  from 'keycloak-js';
-import { Component, inject, signal } from '@angular/core';
-import { CepService } from './core/services/cep.service';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet,  } from '@angular/router';
+
+import Keycloak from 'keycloak-js';
 
 
 
-
+import { scheduleService } from './core/services/schedule-list.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+
+],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App {
+
   keycloak = inject(Keycloak);
 
+  constructor(
+    private scheduleService: scheduleService,
+
+  ) {
+
+    // Configuração do i18n
 
 
-
-
-  constructor(private cepService: CepService, private scheduleService: scheduleService) {
-    this.testeSchedule()
+    this.testeSchedule();
   }
-
 
   testeSchedule() {
 
-  this.scheduleService
-    .list()
-    .subscribe({
-      next: response => {
-        console.log('SUCESSO');
+    this.scheduleService
+      .list()
+      .subscribe({
+        next: response => {
 
-        const carrierNames = response.data.items.map(schedule => schedule.carrierName);
-        console.log(response.data.items.filter(schedule => schedule.carrierName.includes('')));
-      },
-      error: err => {
-        console.error('ERRO');
-        console.error(err);
-      }
-    });
-}
+          console.log('SUCESSO');
 
-  public logout() {
+          console.log(
+            response.data.items.filter(
+              schedule => schedule.carrierName.includes('')
+            )
+          );
+        },
+
+        error: err => {
+
+          console.error('ERRO');
+          console.error(err);
+
+        }
+      });
+  }
+
+
+
+  logout() {
     this.keycloak.logout();
   }
 }

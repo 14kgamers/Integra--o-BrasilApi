@@ -1,0 +1,31 @@
+{
+  "MENU": {
+    "CEP": "CEP Search",
+    "SCHEDULE": "Ocean Schedule",
+    "DDD": "DDD Search",
+    "DOCUMENTATION": "Documentation",
+    "SUPPORT": "Support",
+    "LOGOUT": "Logout"
+  },
+
+  "SCHEDULE": {
+    "TITLE": "Ocean Schedule",
+    "SUBTITLE": "Ocean route and schedule lookup.",
+    "SEARCH": "Search",
+    "ORIGIN": "Origin",
+    "DESTINATION": "Destination",
+    "CARRIER": "Carrier",
+    "WEEKS_OUT": "Weeks Out",
+    "DATE_TYPE": "Date Type",
+    "DIRECT_ONLY": "Direct Only",
+    "SEARCH_BUTTON": "Search",
+    "LOADING": "Searching..."
+  },
+
+  "CEP": {
+    "TITLE": "CEP Search",
+    "PLACEHOLDER": "Enter CEP",
+    "SEARCH": "Search",
+    "LOADING": "Searching CEP..."
+  }
+}

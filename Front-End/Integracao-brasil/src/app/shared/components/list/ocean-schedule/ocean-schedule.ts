@@ -1,7 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { scheduleService } from './../../../../core/services/schedule-list.service';
 import { Component, signal } from '@angular/core';
-
 @Component({
   selector: 'app-ocean-schedule',
   standalone: true,
@@ -10,8 +9,10 @@ import { Component, signal } from '@angular/core';
   styleUrls: ['./ocean-schedule.css']
 })
 export class OceanScheduleComponent {
+
  loading = signal(false)
   schedules: any[] = [];
+
   constructor(
     public scheduleService : scheduleService
   ) {

@@ -1,0 +1,31 @@
+{
+  "MENU": {
+    "CEP": "Consulta CEP",
+    "SCHEDULE": "Ocean Schedule",
+    "DDD": "Consulta DDD",
+    "DOCUMENTATION": "Documentação",
+    "SUPPORT": "Suporte",
+    "LOGOUT": "Sair"
+  },
+
+  "SCHEDULE": {
+    "TITLE": "Ocean Schedule",
+    "SUBTITLE": "Consulta de rotas marítimas e escalas.",
+    "SEARCH": "Pesquisar",
+    "ORIGIN": "Origem",
+    "DESTINATION": "Destino",
+    "CARRIER": "Armador",
+    "WEEKS_OUT": "Semanas",
+    "DATE_TYPE": "Tipo de Data",
+    "DIRECT_ONLY": "Somente Direto",
+    "SEARCH_BUTTON": "Buscar",
+    "LOADING": "Buscando..."
+  },
+
+  "CEP": {
+    "TITLE": "Consulta CEP",
+    "PLACEHOLDER": "Digite um CEP",
+    "SEARCH": "Pesquisar",
+    "LOADING": "Buscando CEP..."
+  }
+}
