@@ -9,6 +9,15 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
+import {
+  provideTranslateService,
+  TranslateLoader
+} from '@ngx-translate/core';
+
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+
 
 
 
@@ -35,7 +44,13 @@ export const appConfig: ApplicationConfig = {
       },
 
 
-    })
+    }),
+        provideTranslateService({
+          loader: provideTranslateHttpLoader({
+            prefix: './assets/i18n/',
+            suffix: '.json'
+          })
+        })
 
   ]
 };

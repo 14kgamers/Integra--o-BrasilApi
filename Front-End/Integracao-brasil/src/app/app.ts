@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet,  } from '@angular/router';
-
+import { TranslateService } from '@ngx-translate/core';
 import Keycloak from 'keycloak-js';
-
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 import { scheduleService } from './core/services/schedule-list.service';
@@ -15,6 +15,7 @@ import { scheduleService } from './core/services/schedule-list.service';
     CommonModule,
     RouterOutlet,
     RouterLink,
+    TranslatePipe
 
 ],
   templateUrl: './app.html',
@@ -23,13 +24,18 @@ import { scheduleService } from './core/services/schedule-list.service';
 export class App {
 
   keycloak = inject(Keycloak);
-
+  translate = inject(TranslateService)
   constructor(
     private scheduleService: scheduleService,
+
 
   ) {
 
     // Configuração do i18n
+    this.translate.addLangs(['pt', 'en']);
+    this.translate.setFallbackLang('pt');
+    this.translate.use('pt');
+
 
 
     this.testeSchedule();
@@ -59,6 +65,16 @@ export class App {
         }
       });
   }
+
+  changeLanguage(lang: string) {
+  this.translate.use(lang);
+
+  console.log('Idioma atual:', this.translate.getCurrentLang());
+
+  this.translate.get('MENU.CEP').subscribe(v => {
+    console.log(v);
+  });
+}
 
 
 

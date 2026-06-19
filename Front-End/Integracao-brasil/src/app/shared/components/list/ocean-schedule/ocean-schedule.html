@@ -6,11 +6,11 @@
     <div class="mb-8">
 
       <h1 class="text-4xl font-bold text-slate-100">
-        Ocean Schedule
+        {{ 'SCHEDULE.TITLE' | translate }}
       </h1>
 
       <p class="text-slate-400 mt-2">
-        Consulta de rotas marítimas e escalas.
+        {{ 'SCHEDULE.SUBTITLE' | translate }}
       </p>
 
     </div>
@@ -20,7 +20,9 @@
 <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-8">
 
   <h2 class="text-lg font-semibold text-blue-400 mb-4">
-    Pesquisa
+
+    {{ 'SCHEDULE.SEARCH' | translate }}
+
   </h2>
 
   <!-- PRIMEIRA LINHA -->
@@ -28,17 +30,17 @@
 
     <!-- ORIGEM -->
     <input
-      #originInput
-      type="text"
-      placeholder="Origem (BRPNG)"
-      class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
-    />
+  #originInput
+  type="text"
+  [placeholder]="'SCHEDULE.ORIGIN-BRPNG' | translate"
+  class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
+/>
 
     <!-- DESTINO -->
     <input
       #destinationInput
       type="text"
-      placeholder="Destino (CNSHA)"
+      [placeholder]="'SCHEDULE.DESTINATION' | translate"
       class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
     />
 
@@ -46,14 +48,19 @@
     <input
       #carrierInput
       type="text"
-      placeholder="Carrier (MAEU)"
+      [placeholder]="'SCHEDULE.CARRIER' | translate"
       class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-blue-500"
     />
 
     <!-- WEEKS OUT -->
-   <select #weeksInput
-  class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200">
-  <option value="" selected disabled hidden>Weeks Out</option>
+  <select
+  #weeksInput
+  class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200"
+>
+  <option value="" selected disabled hidden>
+    {{ 'SCHEDULE.WEEKS_OUT' | translate }}
+  </option>
+
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
@@ -63,9 +70,9 @@
 
 <select #dateTypeInput
   class="bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-200">
-  <option value=""selected disabled hidden>Date Type</option>
-  <option value="direct">Direct</option>
-  <option value="transshipment">Transshipment</option>
+  <option value=""selected disabled hidden>{{ 'SCHEDULE.DATE_TYPE' | translate }}</option>
+  <option value="direct">{{ 'SCHEDULE.DIRECT_TYPE' | translate }}</option>
+  <option value="transshipment">{{ 'SCHEDULE.TRANSSHIPMENT_TYPE' | translate }}</option>
 </select>
 
   </div>
@@ -81,7 +88,7 @@
         class="w-4 h-4 accent-blue-500"
       />
 
-      Direct Only
+      {{ 'SCHEDULE.DIRECT_ONLY' | translate }}
 
     </label>
 
@@ -93,7 +100,8 @@
         class="w-4 h-4 accent-blue-500"
       />
 
-      Nearby Origin Ports
+            {{ 'SCHEDULE.NEARBY_ORIGIN' | translate }}
+
 
     </label>
 
@@ -105,7 +113,8 @@
         class="w-4 h-4 accent-blue-500"
       />
 
-      Nearby Destination Ports
+                  {{ 'SCHEDULE.NEARBY_DESTINATION' | translate }}
+
 
     </label>
 
@@ -133,7 +142,7 @@
     ></div>
 
     <span>
-      {{ loading() ? 'Buscando...' : 'Buscar Schedules' }}
+      {{ loading() ? ('SCHEDULE.LOADING' | translate) : ('SCHEDULE.SEARCH_BUTTON' | translate) }}
     </span>
 
   </button>
@@ -148,13 +157,13 @@
 
           <tr class="text-left text-slate-400 text-sm">
 
-            <th class="p-4">Carrier</th>
-            <th class="p-4">Vessel</th>
-            <th class="p-4">Origem</th>
-            <th class="p-4">Destino</th>
-            <th class="p-4">Duração</th>
-            <th class="p-4">Tipo</th>
-            <th class="p-4">Ações</th>
+            <th class="p-4">{{ 'SCHEDULE.CARRIER' | translate }}</th>
+            <th class="p-4">{{ 'SCHEDULE.VESSEL' | translate }}</th>
+            <th class="p-4">{{ 'SCHEDULE.ORIGIN' | translate }}</th>
+            <th class="p-4">{{ 'SCHEDULE.DESTINATION' | translate }}</th>
+            <th class="p-4">{{ 'SCHEDULE.DURATION' | translate }}</th>
+            <th class="p-4">{{ 'SCHEDULE.TYPE' | translate }}</th>
+            <th class="p-4">{{ 'COMMON.ACTIONS' | translate }}</th>
 
           </tr>
 
@@ -209,7 +218,7 @@
             <td class="p-4">
 
               <span class="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full whitespace-nowrap">
-                {{ schedule.totalDuration }} dias
+                {{ schedule.totalDuration }} {{ 'COMMON.DAYS' | translate }}
               </span>
 
             </td>
@@ -229,7 +238,7 @@
                 (click)="schedule.expanded = !schedule.expanded"
                 class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-sm"
               >
-                {{ schedule.expanded ? 'Ocultar' : 'Ver detalhes' }}
+                {{ schedule.expanded ? ('COMMON.HIDE_DETAILS' | translate) : ('COMMON.VIEW_DETAILS' | translate) }}
               </button>
 
             </td>

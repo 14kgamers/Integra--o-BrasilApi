@@ -13,13 +13,28 @@
     "SUBTITLE": "Ocean route and schedule lookup.",
     "SEARCH": "Search",
     "ORIGIN": "Origin",
-    "DESTINATION": "Destination",
-    "CARRIER": "Carrier",
+    "ORIGIN-BRPNG": "Origin (BRPNG)",
+    "DESTINATION": "Destination (CNSHA)",
+    "CARRIER": "Carrier (MAEU)",
     "WEEKS_OUT": "Weeks Out",
     "DATE_TYPE": "Date Type",
+    "TRANSSHIPMENT_TYPE": "Transshipment",
+    "DIRECT_TYPE": "Direct",
     "DIRECT_ONLY": "Direct Only",
+    "NEARBY_ORIGIN": "Nearby Origin Ports",
+    "NEARBY_DESTINATION": "Nearby Destination Ports",
     "SEARCH_BUTTON": "Search",
-    "LOADING": "Searching..."
+    "LOADING": "Searching...",
+     "CARRIER_1": "Carrier",
+    "VESSEL": "Vessel",
+    "DURATION": "Duration",
+    "TYPE": "Type"
+  },
+  "COMMON": {
+    "ACTIONS": "Actions",
+    "DAYS": "Days",
+    "HIDE_DETAILS": "Hide",
+    "VIEW_DETAILS": "View details"
   },
 
   "CEP": {

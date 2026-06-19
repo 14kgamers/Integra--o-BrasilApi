@@ -1,10 +1,11 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { scheduleService } from './../../../../core/services/schedule-list.service';
 import { Component, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-ocean-schedule',
   standalone: true,
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, TranslatePipe],
   templateUrl: './ocean-schedule.html',
   styleUrls: ['./ocean-schedule.css']
 })

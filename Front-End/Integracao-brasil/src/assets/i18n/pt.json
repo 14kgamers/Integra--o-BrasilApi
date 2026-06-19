@@ -9,17 +9,35 @@
   },
 
   "SCHEDULE": {
-    "TITLE": "Ocean Schedule",
+    "TITLE": "Horário do Oceano ",
     "SUBTITLE": "Consulta de rotas marítimas e escalas.",
     "SEARCH": "Pesquisar",
     "ORIGIN": "Origem",
-    "DESTINATION": "Destino",
-    "CARRIER": "Armador",
+    "ORIGIN-BRPNG": "Origem (BRPNG)",
+    "DESTINATION": "Destino (CNSHA)",
+    "CARRIER": "Armador (MAEU)",
     "WEEKS_OUT": "Semanas",
     "DATE_TYPE": "Tipo de Data",
+    "TRANSSHIPMENT_TYPE": "Transbordo",
+    "DIRECT_TYPE": "Direto",
     "DIRECT_ONLY": "Somente Direto",
+    "NEARBY_ORIGIN": "Portos de origem próximos",
+    "NEARBY_DESTINATION": "Portos de destino próximos",
     "SEARCH_BUTTON": "Buscar",
-    "LOADING": "Buscando..."
+    "LOADING": "Buscando...",
+    "CARRIER_1": "Armador",
+    "VESSEL": "Navio",
+    "DURATION": "Duração",
+    "TYPE": "Tipo"
+
+  },
+
+   "COMMON": {
+    "ACTIONS": "Ações",
+    "DAYS": "Dias",
+    "HIDE_DETAILS": "Ocultar",
+    "VIEW_DETAILS": "Ver detalhes"
+
   },
 
   "CEP": {

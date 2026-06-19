@@ -96,10 +96,24 @@ body{
         logout
       </span>
 
-      Logout
+      {{ 'LOGOUT' | translate }}
         </button>
 
 
+
+        <button
+  (click)="changeLanguage('pt')"
+  class="px-3 py-2 bg-green-600 rounded-lg"
+>
+  PT
+</button>
+
+<button
+  (click)="changeLanguage('en')"
+  class="px-3 py-2 bg-blue-600 rounded-lg ml-2"
+>
+  EN
+</button>
 
         </div>
 
